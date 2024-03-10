@@ -28,16 +28,17 @@ a {
     display: flex;
 }
 .temperature-emoji {
-    font-size: 45px; 
-    margin-top: 22px; 
+    width: 88px;
+    height: 88px;
 }
 .temperature-value {
     font-size: 88px;
+    line-height: 88px;
     font-weight: 600;
     margin-left: 10px;
 }
 .temperature-unit {
-    margin-top: 15px;
+    margin-top: 8px;
     font-size: 25px;
 }
 .weather-app {

@@ -17,12 +17,14 @@ function updateTemperature(response) {
     let humidityElement = document.querySelector("#humidity");
     let speedElement = document.querySelector("#speed");
     let timeElement = document.querySelector("#time");
-    let date = new Date(); // Get the current date and time
-    let formattedDate = formatDate(date);
+    let iconElement = document.querySelector("#emoji"); // Fix: Added the missing '#' in the selector
+    let formattedDate = formatDate(new Date()); // Get the current date and time
+
+    iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="temperature-emoji" />`;
     cityElement.innerHTML = response.data.city;
     temperatureElement.innerHTML = Math.round(temperature);
     descriptionElement.innerHTML = response.data.condition.description;
-    humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+    humidityElement.innerHTML = `${response.data.temperature.humidity}%`; // Removed extra backticks
     speedElement.innerHTML = `${response.data.wind.speed} km/h`;
     timeElement.innerHTML = formattedDate;
 }
@@ -30,7 +32,6 @@ function updateTemperature(response) {
 function handleSearchSubmit(event) {
     event.preventDefault();
     let searchInput = document.querySelector("#search-form-input");
-    let cityElement = document.querySelector("#city");
     searchCity(searchInput.value);
 }
 
