@@ -70,6 +70,21 @@ a {
     display: flex;
     justify-content: space-between;
 }
+.weather-forecast {
+    margin-top: 20px; 
+    text-align: center;
+    color: #000000;
+}
+.forecast-date {
+    font-size: 16px; 
+    opacity: 0.5;
+}
+.forecast-temperature {
+    font-size: 13px; 
+}
+.forecast-temperature-min {
+    opacity: 0.5;
+}
 main {
     padding: 30px 0;
 }
