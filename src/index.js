@@ -42,31 +42,29 @@ function searchCity(city) {
 }
 
 function displayForecast() {
-    let forecastElement = document.querySelector("#forecast");
     
     let days = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let forecastHtml = "";
     days.forEach(function (day) {
     forecastHtml =
     forecastHtml + `
+    <div class="forecast-day">
     <div class="forecast-date">
-     ${day}
-     </div>
-         <img 
-         src="https://cdn.iconscout.com/icon/premium/png-512-thumb/windy-air-2-1147980.png?f=webp&w=512"
-         alt="icon"
-         width="5%"
-         /> 
-        <div class="forecast-temperature">
-         <span class="forecast-temperature-max">
-         18°
-         </span> 
-         <span class="forecast-temperature-min">
-         12°
-         </span>
-        </div>
+    ${day}
+    </div>
+    <div class="forecast-emoji"> 🌤 </div>
+    <div class="forecast-temperature">
+    <span class="forecast-temperature-max">
+    18°
+    </span> 
+    <span class="forecast-temperature-min">
+    12°
+    </span>
+    </div>
+    </div>
     `; 
-    });
+});
+    let forecastElement = document.querySelector("#forecast");
     forecastElement.innerHTML = forecastHtml;
 }
 
