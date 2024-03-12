@@ -19,7 +19,7 @@ function updateTemperature(response) {
     let timeElement = document.querySelector("#time");
     let iconElement = document.querySelector("#emoji"); // Fix: Added the missing '#' in the selector
     let formattedDate = formatDate(new Date()); // Get the current date and time
-
+    
     iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="temperature-emoji" />`;
     cityElement.innerHTML = response.data.city;
     temperatureElement.innerHTML = Math.round(temperature);
@@ -27,6 +27,7 @@ function updateTemperature(response) {
     humidityElement.innerHTML = `${response.data.temperature.humidity}%`; // Removed extra backticks
     speedElement.innerHTML = `${response.data.wind.speed} km/h`;
     timeElement.innerHTML = formattedDate;
+    getForecast(response.data.city);
 }
 
 function handleSearchSubmit(event) {
@@ -41,7 +42,13 @@ function searchCity(city) {
     axios.get(apiUrl).then(updateTemperature);
 }
 
-function displayForecast() {
+function getForecast(city) {
+    let apiKey = "134f3c2049b8o8faf56bft351c709b8c";
+    let apiUrl =`https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+    axios(apiUrl).then(displayForecast);
+}
+
+function displayForecast(response) {
     
     let days = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     let forecastHtml = "";
@@ -72,4 +79,3 @@ let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
 searchCity("Lisbon");
-displayForecast();
